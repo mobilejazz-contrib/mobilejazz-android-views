@@ -1,6 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <declare-styleable name="ButtonGroup">        
+
+    <declare-styleable name="ButtonGroup">
         <attr name="checkedButton" format="reference" />
     </declare-styleable>
+    <declare-styleable name="GridLayout">
+        <attr name="columnCount" format="integer" />
+        <attr name="rowGap" format="dimension" />
+        <attr name="columnGap" format="dimension" />
+    </declare-styleable>
+
 </resources>
