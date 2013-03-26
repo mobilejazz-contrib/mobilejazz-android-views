@@ -19,3 +19,7 @@ local.properties
 .classpath
 .project
 .settings
+
+/local.properties
+
+/local.properties
