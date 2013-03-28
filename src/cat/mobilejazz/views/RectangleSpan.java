@@ -2,6 +2,7 @@ package cat.mobilejazz.views;
 
 import android.graphics.Canvas;
 import android.graphics.Paint;
+import android.graphics.Paint.FontMetrics;
 import android.graphics.Paint.FontMetricsInt;
 import android.graphics.Rect;
 import android.text.style.ReplacementSpan;
@@ -14,6 +15,9 @@ public class RectangleSpan extends ReplacementSpan {
 	private int textColor;
 	private float padding;
 
+	private Rect bounds;
+	private Rect tag;
+
 	/**
 	 * 
 	 * @param padding
@@ -25,6 +29,8 @@ public class RectangleSpan extends ReplacementSpan {
 		this.strokeColor = strokeColor;
 		this.strokeWidth = strokeWidth;
 		this.padding = padding;
+		this.bounds = new Rect();
+		this.tag = new Rect();
 	}
 
 	@Override
@@ -42,10 +48,11 @@ public class RectangleSpan extends ReplacementSpan {
 
 		String str = text.subSequence(start, end).toString();
 
-		Rect bounds = new Rect();
 		paint.getTextBounds(str, 0, str.length(), bounds);
 
-		Rect tag = new Rect((int) x, top, (int) (x + bounds.right + 2 * padding), bottom);
+		FontMetrics fm = paint.getFontMetrics();
+
+		tag.set((int) x, (int) (y + fm.ascent), (int) (x + bounds.right + 2 * padding), bottom);
 
 		paint.setColor(fillColor);
 		paint.setStyle(Paint.Style.FILL);
