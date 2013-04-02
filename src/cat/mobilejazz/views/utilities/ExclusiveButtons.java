@@ -20,14 +20,22 @@ public class ExclusiveButtons implements OnCheckedChangeListener {
 	private List<CompoundButton> items;
 	private CompoundButton currentSelection;
 
+	private OnCheckedChangeListener listener;
+	private boolean canDeselectCurrent;
+
 	public ExclusiveButtons() {
 		items = new ArrayList<CompoundButton>();
 		currentSelection = null;
+		canDeselectCurrent = false;
+	}
+
+	public ExclusiveButtons(boolean canDeselectCurrent) {
+		this.canDeselectCurrent = canDeselectCurrent;
 	}
 
 	public void addItem(CompoundButton item) {
 		items.add(item);
-		if (currentSelection == null) {
+		if (currentSelection == null && canDeselectCurrent) {
 			item.setChecked(true);
 			currentSelection = item;
 		}
@@ -37,10 +45,21 @@ public class ExclusiveButtons implements OnCheckedChangeListener {
 	@Override
 	public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
 		if (isChecked && buttonView != currentSelection) {
-			currentSelection.setChecked(false);
+			if (currentSelection != null)
+				currentSelection.setChecked(false);
 			buttonView.setChecked(true);
 			currentSelection = buttonView;
+		} else if (canDeselectCurrent && buttonView == currentSelection && !isChecked) {
+			currentSelection.setChecked(isChecked);
+			currentSelection = null;
 		}
+		if (listener != null) {
+			listener.onCheckedChanged(buttonView, isChecked);
+		}
+	}
+
+	public void setOnCheckedChangeListener(OnCheckedChangeListener listener) {
+		this.listener = listener;
 	}
 
 }
