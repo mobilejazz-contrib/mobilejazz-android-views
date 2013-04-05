@@ -21,8 +21,10 @@
 
 package cat.mobilejazz.views;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.res.TypedArray;
+import android.os.Build;
 import android.util.AttributeSet;
 import android.view.View;
 import android.view.ViewGroup;
@@ -75,6 +77,8 @@ public class ButtonGroup extends LinearLayout {
 	private OnCheckedChangeListener mOnCheckedChangeListener;
 	private PassThroughHierarchyChangeListener mPassThroughListener;
 
+	private boolean mMeasureWithLargestChild;
+
 	/**
 	 * {@inheritDoc}
 	 */
@@ -87,6 +91,7 @@ public class ButtonGroup extends LinearLayout {
 	/**
 	 * {@inheritDoc}
 	 */
+	@SuppressLint("NewApi")
 	public ButtonGroup(Context context, AttributeSet attrs) {
 		super(context, attrs);
 
@@ -97,6 +102,11 @@ public class ButtonGroup extends LinearLayout {
 		int value = attributes.getResourceId(R.styleable.ButtonGroup_checkedButton, View.NO_ID);
 		if (value != View.NO_ID) {
 			mCheckedId = value;
+		}
+
+		mMeasureWithLargestChild = attributes.getBoolean(R.styleable.ButtonGroup_measureWithLargestChild, false);
+		if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB) {
+			setMeasureWithLargestChildEnabled(mMeasureWithLargestChild);
 		}
 
 		// final int index =
@@ -199,7 +209,7 @@ public class ButtonGroup extends LinearLayout {
 			((CompoundButton) checkedView).setChecked(checked);
 		}
 	}
-	
+
 	private void setEnabledForView(int viewId, boolean enabled) {
 		View checkedView = findViewById(viewId);
 		if (checkedView != null && checkedView instanceof CompoundButton) {
@@ -448,6 +458,32 @@ public class ButtonGroup extends LinearLayout {
 			if (mOnHierarchyChangeListener != null) {
 				mOnHierarchyChangeListener.onChildViewRemoved(parent, child);
 			}
+		}
+	}
+
+	@Override
+	protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
+		if (Build.VERSION.SDK_INT < Build.VERSION_CODES.HONEYCOMB && mMeasureWithLargestChild) {
+			super.onMeasure(widthMeasureSpec, heightMeasureSpec);
+			// manually hack:
+			int maxWidth = 0;
+
+			for (int i = 0; i < getChildCount(); ++i) {
+				View child = getChildAt(i);
+				if (child.getMeasuredWidth() > maxWidth) {
+					maxWidth = child.getMeasuredWidth();
+				}
+			}
+
+			for (int i = 0; i < getChildCount(); ++i) {
+				View child = getChildAt(i);
+				child.measure(MeasureSpec.makeMeasureSpec(maxWidth, MeasureSpec.EXACTLY),
+						MeasureSpec.makeMeasureSpec(child.getMeasuredHeight(), MeasureSpec.EXACTLY));
+			}
+
+			setMeasuredDimension(maxWidth * getChildCount(), getMeasuredHeight());
+		} else {
+			super.onMeasure(widthMeasureSpec, heightMeasureSpec);
 		}
 	}
 }

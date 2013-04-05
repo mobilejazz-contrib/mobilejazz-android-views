@@ -3,11 +3,15 @@
 
     <declare-styleable name="ButtonGroup">
         <attr name="checkedButton" format="reference" />
+        <attr name="measureWithLargestChild" format="boolean" />
     </declare-styleable>
     <declare-styleable name="GridLayout">
         <attr name="columnCount" format="integer" />
         <attr name="rowGap" format="dimension" />
         <attr name="columnGap" format="dimension" />
+    </declare-styleable>
+    <declare-styleable name="CompoundImageButton">
+        <attr name="buttonPadding" format="dimension" />
     </declare-styleable>
 
 </resources>
