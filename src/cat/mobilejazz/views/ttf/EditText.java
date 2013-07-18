@@ -3,18 +3,18 @@ package cat.mobilejazz.views.ttf;
 import android.content.Context;
 import android.util.AttributeSet;
 
-public class Button extends android.widget.Button {
+public class EditText extends android.widget.EditText {
 
-	public Button(Context context) {
+	public EditText(Context context) {
 		super(context);
 	}
 
-	public Button(Context context, AttributeSet attrs) {
+	public EditText(Context context, AttributeSet attrs) {
 		super(context, attrs);
 		TTFViewHelper.initialize(this, context, attrs);
 	}
 
-	public Button(Context context, AttributeSet attrs, int defStyle) {
+	public EditText(Context context, AttributeSet attrs, int defStyle) {
 		super(context, attrs, defStyle);
 		TTFViewHelper.initialize(this, context, attrs);
 	}

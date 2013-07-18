@@ -1,4 +1,4 @@
-package cat.mobilejazz.views;
+package cat.mobilejazz.views.ttf;
 
 import android.annotation.TargetApi;
 import android.content.Context;
@@ -11,6 +11,7 @@ import android.view.Gravity;
 import android.view.accessibility.AccessibilityEvent;
 import android.view.accessibility.AccessibilityNodeInfo;
 import android.widget.CompoundButton;
+import cat.mobilejazz.views.R;
 
 @TargetApi(Build.VERSION_CODES.ICE_CREAM_SANDWICH)
 public class CompoundImageButton extends CompoundButton {
@@ -24,6 +25,7 @@ public class CompoundImageButton extends CompoundButton {
 
 	public CompoundImageButton(Context context, AttributeSet attrs) {
 		this(context, attrs, R.style.CompoundButton);
+		TTFViewHelper.initialize(this, context, attrs);
 	}
 
 	public CompoundImageButton(Context context, AttributeSet attrs, int defStyle) {
@@ -34,6 +36,7 @@ public class CompoundImageButton extends CompoundButton {
 		mButtonDrawablePadding = a.getDimensionPixelOffset(R.styleable.CompoundImageButton_buttonPadding, 0);
 
 		a.recycle();
+		TTFViewHelper.initialize(this, context, attrs);
 	}
 
 	@Override
