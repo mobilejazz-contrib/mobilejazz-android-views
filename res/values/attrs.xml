@@ -13,10 +13,14 @@
     <declare-styleable name="CompoundImageButton">
         <attr name="buttonPadding" format="dimension" />
     </declare-styleable>
-    
     <declare-styleable name="TtfCapableView">
         <attr name="typeface" format="string" />
         <attr name="textAllCaps" format="boolean" />
+    </declare-styleable>
+    <declare-styleable name="FontIconView">
+        <attr name="character" format="string" />
+        <attr name="color" format="color" />
+        <attr name="textSize" format="dimension" />
     </declare-styleable>
 
 </resources>

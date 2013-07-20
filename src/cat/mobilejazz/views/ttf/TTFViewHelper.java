@@ -26,5 +26,7 @@ class TTFViewHelper {
 		if (allCaps) {
 			view.setTransformationMethod(new AllCapsTransformationMethod(context));
 		}
+
+		attributes.recycle();
 	}
 }
