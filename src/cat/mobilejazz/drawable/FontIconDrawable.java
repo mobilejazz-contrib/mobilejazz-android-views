@@ -5,6 +5,7 @@ import java.io.IOException;
 import org.xmlpull.v1.XmlPullParser;
 import org.xmlpull.v1.XmlPullParserException;
 
+import android.content.Context;
 import android.content.res.Resources;
 import android.content.res.TypedArray;
 import android.graphics.Canvas;
@@ -35,6 +36,14 @@ public class FontIconDrawable extends Drawable {
 	private boolean mIsOpaque;
 
 	public FontIconDrawable() {
+	}
+	
+	public FontIconDrawable(Context context, String typefaceFileName, int character, int color, float textSize) {
+		this(TypefaceHelper.getTypeface(context, typefaceFileName), (char) character, color, textSize);
+	}
+
+	public FontIconDrawable(Context context, String typefaceFileName, char character, int color, float textSize) {
+		init(TypefaceHelper.getTypeface(context, typefaceFileName), character, color, textSize);
 	}
 
 	public FontIconDrawable(Typeface typeface, int character, int color, float textSize) {
