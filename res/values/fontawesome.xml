@@ -499,4 +499,6 @@
 
     <integer name="ic_folder_open_alt">0xf115</integer>
     
+    <integer name="ic_smile">0xf118</integer>
+    
 </resources>

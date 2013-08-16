@@ -502,6 +502,8 @@ public class FontawesomeDrawable extends FontIconDrawable {
     public static final int IC_FOLDER_CLOSE_ALT = 0xf114;
 
     public static final int IC_FOLDER_OPEN_ALT = 0xf115;
+    
+    public static final int IC_SMILE = 0xF118;
 	
 	public FontawesomeDrawable(Context context, int character, int color, float textSize) {
 		super(TypefaceHelper.getTypeface(context, "fontawesome.ttf"), (char) character, color, textSize);
