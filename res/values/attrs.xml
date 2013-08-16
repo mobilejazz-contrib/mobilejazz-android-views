@@ -18,7 +18,7 @@
         <attr name="textAllCaps" format="boolean" />
     </declare-styleable>
     <declare-styleable name="FontIconView">
-        <attr name="character" format="string" />
+        <attr name="character" format="integer" />
         <attr name="color" format="color" />
         <attr name="textSize" format="dimension" />
     </declare-styleable>

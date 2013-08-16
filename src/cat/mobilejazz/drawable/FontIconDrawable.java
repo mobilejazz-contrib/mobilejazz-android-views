@@ -16,7 +16,6 @@ import android.graphics.PixelFormat;
 import android.graphics.Typeface;
 import android.graphics.drawable.Drawable;
 import android.util.AttributeSet;
-import android.view.InflateException;
 import cat.mobilejazz.views.R;
 import cat.mobilejazz.views.ttf.TypefaceHelper;
 
@@ -116,17 +115,9 @@ public class FontIconDrawable extends Drawable {
 
 		int color = a.getColor(R.styleable.FontIconView_color, Color.rgb(0, 0, 0));
 		float textSize = a.getDimension(R.styleable.FontIconView_textSize, 32.0f);
-		CharSequence character = a.getText(R.styleable.FontIconView_character);
+		int character = a.getInteger(R.styleable.FontIconView_character, 0);
 
-		if (typefaceDesc == null) {
-			throw new InflateException("Must provide a typeface");
-		}
-
-		if (character == null || character.length() > 1) {
-			throw new InflateException("Must provide exactly one character");
-		}
-
-		init(typeface, character.charAt(0), color, textSize);
+		init(typeface, (char)character, color, textSize);
 
 		a.recycle();
 	}
