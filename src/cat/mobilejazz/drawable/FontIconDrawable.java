@@ -81,7 +81,7 @@ public class FontIconDrawable extends Drawable {
 
 	@Override
 	public void draw(Canvas canvas) {
-		canvas.drawText(mText, 0, mHeight - mPaint.getFontMetrics().descent, mPaint);
+		canvas.drawText(mText, getBounds().left, getBounds().top + mHeight - mPaint.getFontMetrics().descent, mPaint);
 	}
 
 	@Override
