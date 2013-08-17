@@ -18,19 +18,27 @@ public class RectangleSpan extends ReplacementSpan {
 	private Rect bounds;
 	private Rect tag;
 
+	protected RectangleSpan() {
+		this.bounds = new Rect();
+		this.tag = new Rect();
+	}
+
+	protected void init(int textColor, int fillColor, int strokeColor, float strokeWidth, float padding) {
+		this.textColor = textColor;
+		this.fillColor = fillColor;
+		this.strokeColor = strokeColor;
+		this.strokeWidth = strokeWidth;
+		this.padding = padding;
+	}
+
 	/**
 	 * 
 	 * @param padding
 	 *            the left and right padding in pixels
 	 */
 	public RectangleSpan(int textColor, int fillColor, int strokeColor, float strokeWidth, float padding) {
-		this.textColor = textColor;
-		this.fillColor = fillColor;
-		this.strokeColor = strokeColor;
-		this.strokeWidth = strokeWidth;
-		this.padding = padding;
-		this.bounds = new Rect();
-		this.tag = new Rect();
+		this();
+		init(textColor, fillColor, strokeColor, strokeWidth, padding);
 	}
 
 	@Override
