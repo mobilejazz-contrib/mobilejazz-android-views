@@ -64,6 +64,7 @@ public class FontIconDrawable extends Drawable {
 
 		mPaint.setColor(mColor);
 		mPaint.setTextSize(mTextSize);
+		mPaint.setAntiAlias(true);
 		mWidth = (int) Math.ceil(mPaint.measureText(mText));
 		mHeight = (int) Math.ceil(-mPaint.getFontMetrics().ascent + mPaint.getFontMetrics().descent);
 		mIsOpaque = true;
