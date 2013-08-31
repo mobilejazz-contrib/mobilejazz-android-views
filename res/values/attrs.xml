@@ -22,5 +22,20 @@
         <attr name="color" format="color" />
         <attr name="textSize" format="dimension" />
     </declare-styleable>
+    <declare-styleable name="BubbleSpinner">
+
+        <!-- Declare the bubble popup -->
+        <attr name="tipPosition" format="enum">
+            <enum name="center" value="0" />
+            <enum name="left" value="-1" />
+            <enum name="right" value="1" />
+        </attr>
+        <attr name="tipBottomLength" format="float"/>
+        <attr name="rectOffset" format="float" />
+        <attr name="xRadius" format="float" />
+        <attr name="yRadius" format="float" />
+        <attr name="paddingLeftRight" format="integer"/>
+        <attr name="customSelector" format="string"/>
+    </declare-styleable>
 
 </resources>
