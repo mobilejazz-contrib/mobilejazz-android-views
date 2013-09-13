@@ -11,11 +11,15 @@ public class Button extends android.widget.Button {
 
 	public Button(Context context, AttributeSet attrs) {
 		super(context, attrs);
-		TTFViewHelper.initialize(this, context, attrs);
+		if (!isInEditMode()) {
+			TTFViewHelper.initialize(this, context, attrs);
+		}
 	}
 
 	public Button(Context context, AttributeSet attrs, int defStyle) {
 		super(context, attrs, defStyle);
-		TTFViewHelper.initialize(this, context, attrs);
+		if (!isInEditMode()) {
+			TTFViewHelper.initialize(this, context, attrs);
+		}
 	}
 }
