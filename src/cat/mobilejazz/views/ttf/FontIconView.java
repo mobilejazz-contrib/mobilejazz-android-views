@@ -4,12 +4,11 @@ import java.io.IOException;
 
 import org.xmlpull.v1.XmlPullParserException;
 
-import cat.mobilejazz.drawable.FontIconDrawable;
-
 import android.content.Context;
 import android.util.AttributeSet;
 import android.view.InflateException;
 import android.widget.ImageView;
+import cat.mobilejazz.drawable.FontIconDrawable;
 
 public class FontIconView extends ImageView {
 
@@ -28,14 +27,19 @@ public class FontIconView extends ImageView {
 	}
 
 	private void init(Context context, AttributeSet attrs) {
-		FontIconDrawable drawable = new FontIconDrawable();
-		try {
-			drawable.inflate(context.getResources(), null, attrs);
-		} catch (XmlPullParserException e) {
-			throw new InflateException(e);
-		} catch (IOException e) {
-			throw new InflateException(e);
+		if (!isInEditMode()) {
+			FontIconDrawable drawable = new FontIconDrawable();
+			try {
+				drawable.inflate(context.getResources(), null, attrs);
+			} catch (XmlPullParserException e) {
+				throw new InflateException(e);
+			} catch (IOException e) {
+				throw new InflateException(e);
+			}
+			setImageDrawable(drawable);
 		}
-		setImageDrawable(drawable);
+		else {
+			setImageResource(android.R.drawable.stat_notify_sync);
+		}
 	}
 }

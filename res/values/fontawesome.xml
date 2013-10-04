@@ -501,4 +501,6 @@
     
     <integer name="ic_smile">0xf118</integer>
     
+    <integer name="ic_rocket">0xf135</integer>
+    
 </resources>

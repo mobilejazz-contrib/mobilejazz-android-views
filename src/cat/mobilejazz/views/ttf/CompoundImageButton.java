@@ -25,7 +25,10 @@ public class CompoundImageButton extends CompoundButton {
 
 	public CompoundImageButton(Context context, AttributeSet attrs) {
 		this(context, attrs, R.style.CompoundButton);
-		TTFViewHelper.initialize(this, context, attrs);
+		
+		if (!isInEditMode()) {
+			TTFViewHelper.initialize(this, context, attrs);
+		}
 	}
 
 	public CompoundImageButton(Context context, AttributeSet attrs, int defStyle) {
@@ -36,7 +39,10 @@ public class CompoundImageButton extends CompoundButton {
 		mButtonDrawablePadding = a.getDimensionPixelOffset(R.styleable.CompoundImageButton_buttonPadding, 0);
 
 		a.recycle();
-		TTFViewHelper.initialize(this, context, attrs);
+		
+		if (!isInEditMode()) {
+			TTFViewHelper.initialize(this, context, attrs);
+		}
 	}
 
 	@Override
