@@ -34,7 +34,7 @@
     <integer name="ic_zoom_out">0xf010</integer>
 
     <integer name="ic_off">0xf011</integer>
-
+    
     <integer name="ic_signal">0xf012</integer>
 
     <integer name="ic_cog">0xf013</integer>
@@ -502,5 +502,7 @@
     <integer name="ic_smile">0xf118</integer>
     
     <integer name="ic_rocket">0xf135</integer>
+    
+    <integer name="ic_ellipsis_horizontal">0xf141</integer>
     
 </resources>
