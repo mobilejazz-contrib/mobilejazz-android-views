@@ -507,6 +507,8 @@ public class FontawesomeDrawable extends FontIconDrawable {
     
     public static final int IC_ROCKET = 0xF135;
 	
+    public static final int IC_FILE_TEXT = 0xf15c;
+    
 	public FontawesomeDrawable(Context context, int character, int color, float textSize) {
 		super(TypefaceHelper.getTypeface(context, "fontawesome.ttf"), (char) character, color, textSize);
 	}
