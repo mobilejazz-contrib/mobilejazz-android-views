@@ -76,6 +76,11 @@ public class RectangleSpan extends ReplacementSpan implements LineHeightSpan {
 		FontMetrics fm = paint.getFontMetrics();
 		tag.set((int) x, (int) (top), (int) (x + bounds.right + 2 * padding),(int)( bottom ));
 
+		Debug.debug("Size 1: %d, %d, %d", top, y, bottom);
+		Debug.debug("Size 2: %.1f, %.1f, %.1f, %.1f", fm.ascent, fm.descent, fm.top, fm.bottom);
+		Debug.debug("Size 3: %d, %d, %d, %d", fontMetrics.ascent, fontMetrics.descent, fontMetrics.top, fontMetrics.bottom);
+		Debug.debug("Size 4: %d", y);
+
 		paint.setColor(fillColor);
 		paint.setStyle(Paint.Style.FILL);
 		canvas.drawRect(tag, paint);
@@ -87,7 +92,7 @@ public class RectangleSpan extends ReplacementSpan implements LineHeightSpan {
 
 		paint.setColor(textColor);
 		paint.setStyle(Paint.Style.FILL);
-		canvas.drawText(text, start, end, x + padding, y, paint);
+		canvas.drawText(text, start, end, x + padding, y + (fm.top+fm.descent)/4 , paint);
 
 		canvas.restore();
 
@@ -120,13 +125,14 @@ public class RectangleSpan extends ReplacementSpan implements LineHeightSpan {
                 Paint p = new Paint();
                 p.setTextSize(100);
                 Rect r = new Rect();
-                p.getTextBounds("ABCDEFG", 0, 7, r);
+                p.getTextBounds("AbcdEfG", 0, 7, r);
+                
 
                 sProportion = (r.top) / p.ascent();
             }
 
             int need = (int) Math.ceil(-fm.top * sProportion);
-
+            
             if (size - fm.descent >= need) {
                 /*
                  * It is safe to shrink the ascent this much.
@@ -150,6 +156,7 @@ public class RectangleSpan extends ReplacementSpan implements LineHeightSpan {
                 fm.top = fm.ascent = -size;
                 fm.bottom = fm.descent = 0;
             }
+            
 		}
 		fontMetrics = fm;
 	}
