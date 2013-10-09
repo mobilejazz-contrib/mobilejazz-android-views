@@ -74,9 +74,6 @@ public class RectangleSpan extends ReplacementSpan implements LineHeightSpan {
 		paint.getTextBounds(str, 0, str.length(), bounds);
 
 		FontMetrics fm = paint.getFontMetrics();
-		Debug.debug("%d, %d, %d", top, y, bottom);
-		Debug.debug("%.1f, %.1f, %.1f, %.1f", fm.ascent, fm.descent, fm.top, fm.bottom);
-		Debug.debug("%d, %d, %d, %d", fontMetrics.ascent, fontMetrics.descent, fontMetrics.top, fontMetrics.bottom);
 
 		tag.set((int) x, (int) top, (int) (x + bounds.right + 2 * padding), bottom);
 
