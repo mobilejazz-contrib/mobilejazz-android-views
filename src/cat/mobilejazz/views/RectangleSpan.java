@@ -8,7 +8,6 @@ import android.graphics.Rect;
 import android.text.TextPaint;
 import android.text.style.LineHeightSpan;
 import android.text.style.ReplacementSpan;
-import cat.mobilejazz.utilities.debug.Debug;
 
 public class RectangleSpan extends ReplacementSpan implements LineHeightSpan {
 
