@@ -127,6 +127,8 @@
 
     <integer name="ic_adjust">0xf042</integer>
 
+   	<integer name="ic_power_off">0xf011</integer>
+    
     <integer name="ic_tint">0xf043</integer>
 
     <integer name="ic_edit">0xf044</integer>
