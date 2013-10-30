@@ -505,4 +505,6 @@
     
     <integer name="ic_ellipsis_horizontal">0xf141</integer>
     
+    <integer name="ic_dropbox">0xf16b</integer>
+    
 </resources>
