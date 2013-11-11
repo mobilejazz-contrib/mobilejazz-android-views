@@ -25,10 +25,14 @@ public class FontIconView extends ImageView {
 		super(context, attrs, defStyle);
 		init(context, attrs);
 	}
+	
+	protected FontIconDrawable createNewDrawable() {
+		return new FontIconDrawable();
+	}
 
 	private void init(Context context, AttributeSet attrs) {
 		if (!isInEditMode()) {
-			FontIconDrawable drawable = new FontIconDrawable();
+			FontIconDrawable drawable = createNewDrawable();
 			try {
 				drawable.inflate(context.getResources(), null, attrs);
 			} catch (XmlPullParserException e) {
