@@ -53,7 +53,7 @@ public class FontIconDrawable extends Drawable {
 		init(typeface, character, color, textSize);
 	}
 
-	private void init(Typeface typeface, char character, int color, float textSize) {
+	protected void init(Typeface typeface, char character, int color, float textSize) {
 		mTypeface = typeface;
 		mPaint = new Paint();
 		mPaint.setTypeface(mTypeface);

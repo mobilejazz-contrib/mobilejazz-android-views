@@ -443,7 +443,7 @@ public class FontawesomeDrawable extends FontIconDrawable {
 
     public static final int IC_FOOD = 0xf0f5;
 
-    public static final int IC_FILE_ALT = 0xf0f6;
+    public static final int IC_FILE_ALT = 0xf016;
 
     public static final int IC_BUILDING = 0xf0f7;
 
@@ -508,6 +508,10 @@ public class FontawesomeDrawable extends FontIconDrawable {
     public static final int IC_ROCKET = 0xF135;
 	
     public static final int IC_FILE_TEXT = 0xf15c;
+    
+    public static final int IC_FILE_TEXT_ALT = 0xf0f6;
+    
+    public static final int IC_ARCHIVE = 0xf187;
     
 	public FontawesomeDrawable(Context context, int character, int color, float textSize) {
 		super(TypefaceHelper.getTypeface(context, "fontawesome.ttf"), (char) character, color, textSize);

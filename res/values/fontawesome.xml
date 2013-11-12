@@ -441,7 +441,7 @@
 
     <integer name="ic_food">0xf0f5</integer>
 
-    <integer name="ic_file_alt">0xf0f6</integer>
+    <integer name="ic_file_alt">0xf016</integer>
 
     <integer name="ic_building">0xf0f7</integer>
 
@@ -508,5 +508,7 @@
     <integer name="ic_ellipsis_horizontal">0xf141</integer>
     
     <integer name="ic_dropbox">0xf16b</integer>
+    
+    <integer name="ic_archive">0xf187</integer>
     
 </resources>
